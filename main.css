@@ -247,57 +247,6 @@ main .bottomMain .headerTodos{
 
 
 
-
-
-
-
-
-
-
-
-
-
-/* =====================================================mobile=================================================== */
-@media (max-width: 768px) {
-    main .bottomMain .interractian {
-        display: flex;
-        margin-top: 30px;
-        width: 100%;
-        height: 150px;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    main .bottomMain .interractian input {
-        height: 100px;
-        margin-bottom: 10px;
-    }
-
-    main .bottomMain .interractian button {
-        width: 50%;
-    }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ========================== TABLE ============================= */
 
 .table {
@@ -405,3 +354,73 @@ main .bottomMain .headerTodos{
   padding: 4px 6px;
   font-size: 0.75rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================mobile=================================================== */
+@media (max-width: 768px) {
+    main .bottomMain .interractian {
+        display: flex;
+        margin-top: 30px;
+        width: 100%;
+        height: 150px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main .bottomMain .interractian input {
+        height: 100px;
+        margin-bottom: 10px;
+        width: min(23em,90%);
+    }
+
+    main .bottomMain .interractian button {
+        width: 50%;
+    }
+    main .bottomMain .sershAndSort input {
+        width: 0;
+    }
+
+    .table thead th {
+        padding: 8px 19px;
+        text-align: left;
+        border-bottom: 2px solid var(--color-border);
+    }
+
+    .table {
+        display: flex;
+        overflow: scroll;
+        /* width: auto; */
+        border-collapse: collapse;
+        background-color: var(--color-bg);
+        border-radius: 10px;
+        overflow: scroll;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+}
+
+
+
