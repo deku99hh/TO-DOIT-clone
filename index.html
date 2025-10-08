@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+
+    <title>TO-DOIT</title>
+
+
+</head>
+<body>
+    <div class="cridet">
+        made by deku99hh
+    </div>
+    
+    <main>
+
+        <div class="topMain">
+            <h1>Todo List</h1>
+            <div class="fourBlockes">
+                <div class="block1 block">
+                    <p class="subTitle">Total Tasks</p>
+                    <div class="nomberAndIcon">
+                        <p>1</p>
+                        <i class="bx bx-task text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="block2 block">
+                    <p class="subTitle">Total Tasks</p>
+                    <div class="nomberAndIcon">
+                        <p>0</p>
+                        <i class="bx bx-check-circle text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="block3 block">
+                    <p class="subTitle">Total Tasks</p>
+                    <div class="nomberAndIcon">
+                        <p>1</p>
+                        <i class="bx bx-time text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="block4 block">
+                    <p class="subTitle">Total Tasks</p>
+                    <div class="nomberAndIcon">
+                        <p>0%</p>
+                        <i class="bx bx-pie-chart-alt text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="loodingBar">
+            </div>
+        </div>
+
+        <div class="bottomMain">
+            <div class="interractian">
+                <input type="text" class="text" placeholder="add a todo...">
+                <input type="date" class="date">
+                <button>
+                    <i class="bx bx-plus bx-sm"></i>
+                </button>
+            </div>
+
+            <div class="sershAndSort">
+                <input type="text" placeholder="search tasks...">
+                <button><i class="bx bx-filter mr-2"></i>filter</button>
+            </div>
+            <div class="towButtons">
+                <button class="SORT"><i class="bx bx-sort mr-1"></i>  SORT</button>
+                <button class="deleteAll"><i class="bx bx-trash mr-2"></i>  Delete All</button>
+            </div>
+
+
+<!-- table -->
+<table class="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th class="w-2/5">Task</th>
+              <th class="w-1/5">Due Date</th>
+              <th class="w-1/5">Status</th>
+              <th class="w-1/5">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="todos-list-body"><tr class="todo-item  " data-id="mwvfpf848yo44sgi7fc6bt" draggable="true">
+      <td class="">
+        <div class="flex items-center">
+          
+          <span class="" data-original="sfdfZDF">
+            sfdfZDF
+          </span>
+          
+        </div>
+      </td>
+      <td>No due date</td>
+      <td>
+        <div class="badge badge-warning">
+          Pending
+        </div>
+      </td>
+      <td>
+        <div class="flex gap-1">
+          
+            <button class="btn btn-info btn-xs add-subtask-btn" data-id="mwvfpf848yo44sgi7fc6bt" title="Add Subtask">
+              <i class="bx bx-plus"></i>
+            </button>
+          
+          <button class="btn btn-warning btn-xs edit-btn" data-id="mwvfpf848yo44sgi7fc6bt" title="Edit">
+            <i class="bx bx-edit-alt"></i>    
+          </button>
+          <button class="btn btn-success btn-xs toggle-btn" data-id="mwvfpf848yo44sgi7fc6bt" title="Mark Complete">
+            <i class="bx bx-check"></i>
+          </button>
+          <button class="btn btn-error btn-xs delete-btn" data-id="mwvfpf848yo44sgi7fc6bt" title="Delete">
+            <i class="bx bx-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr><tr class="todo-item  " data-id="4k57gjzfy8o3kt0phlwjv3" draggable="true">
+      <td class="">
+        <div class="flex items-center">
+          
+          <span class="" data-original="fdsfsdf">
+            fdsfsdf
+          </span>
+          
+        </div>
+      </td>
+      <td>No due date</td>
+      <td>
+        <div class="badge badge-warning">
+          Pending
+        </div>
+      </td>
+      <td>
+        <div class="flex gap-1">
+          
+            <button class="btn btn-info btn-xs add-subtask-btn" data-id="4k57gjzfy8o3kt0phlwjv3" title="Add Subtask">
+              <i class="bx bx-plus"></i>
+            </button>
+          
+          <button class="btn btn-warning btn-xs edit-btn" data-id="4k57gjzfy8o3kt0phlwjv3" title="Edit">
+            <i class="bx bx-edit-alt"></i>    
+          </button>
+          <button class="btn btn-success btn-xs toggle-btn" data-id="4k57gjzfy8o3kt0phlwjv3" title="Mark Complete">
+            <i class="bx bx-check"></i>
+          </button>
+          <button class="btn btn-error btn-xs delete-btn" data-id="4k57gjzfy8o3kt0phlwjv3" title="Delete">
+            <i class="bx bx-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr></tbody>
+</table>
+<!-- /table -->
+
+        </div>
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // ======================= TO DO LOGIC ===========================
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        const taskInput = document.querySelector(".interractian .text");
+        const dateInput = document.querySelector(".interractian .date");
+        const addTaskBtn = document.querySelector(".interractian button");
+        const taskTableBody = document.querySelector(".todos-list-body");
+        const clearAllBtn = document.querySelector(".deleteAll");
+        const searchInput = document.querySelector(".sershAndSort input");
+        const filterBtn = document.querySelector(".sershAndSort button");
+        const sortBtn = document.querySelector(".SORT");
+
+        // Statistics elements
+        const totalTasksEl = document.querySelector(".block1 .nomberAndIcon p");
+        const completedTasksEl = document.querySelector(".block2 .nomberAndIcon p");
+        const pendingTasksEl = document.querySelector(".block3 .nomberAndIcon p");
+        const progressPercentEl = document.querySelector(".block4 .nomberAndIcon p");
+        const progressBar = document.querySelector(".loodingBar");
+
+        // ======================= إضافة مهمة جديدة ===========================
+        addTaskBtn.addEventListener("click", () => {
+            const text = taskInput.value.trim();
+            const dueDate = dateInput.value;
+            
+            if (text === "") {
+                alert("Please write a task!");
+                return;
+            }
+
+            const newTask = {
+                id: Date.now().toString(),
+                text,
+                dueDate: dueDate || "No due date",
+                completed: false,
+                createdAt: new Date().toISOString()
+            };
+
+            tasks.push(newTask);
+            saveTasks();
+            taskInput.value = "";
+            dateInput.value = "";
+            renderTasks();
+        });
+
+        // دعم الإدخال بالزر Enter
+        taskInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                addTaskBtn.click();
+            }
+        });
+
+        // ======================= حفظ المهام ===========================
+        function saveTasks() {
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+
+        // ======================= تحديث العدادات ===========================
+        function updateStats() {
+            const total = tasks.length;
+            const completed = tasks.filter(t => t.completed).length;
+            const pending = total - completed;
+            const progress = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+            totalTasksEl.textContent = total;
+            completedTasksEl.textContent = completed;
+            pendingTasksEl.textContent = pending;
+            progressPercentEl.textContent = progress + "%";
+
+            // تحديث شريط التقدم
+            progressBar.style.background = `linear-gradient(to right, var(--color-success) ${progress}%, var(--color-border) ${progress}%)`;
+
+            // إظهار أو إخفاء زر Clear All
+            clearAllBtn.style.display = total > 0 ? "inline-block" : "none";
+        }
+
+        // ======================= عرض المهام ===========================
+        function renderTasks(filteredTasks = null) {
+            const tasksToRender = filteredTasks || tasks;
+            
+            taskTableBody.innerHTML = "";
+
+            if (tasksToRender.length === 0) {
+                taskTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 20px;">
+                            No tasks found. Add a new task to get started!
+                        </td>
+                    </tr>
+                `;
+                updateStats();
+                return;
+            }
+
+            tasksToRender.forEach((task) => {
+                const tr = document.createElement("tr");
+                tr.className = `todo-item ${task.completed ? 'completed' : ''}`;
+                tr.setAttribute('data-id', task.id);
+                tr.setAttribute('draggable', 'true');
+
+                tr.innerHTML = `
+                    <td class="">
+                        <div class="flex items-center">
+                            <span class="" data-original="${task.text}">
+                                ${task.text}
+                            </span>
+                        </div>
+                    </td>
+                    <td>${task.dueDate}</td>
+                    <td>
+                        <div class="badge ${task.completed ? 'badge-success' : 'badge-warning'}">
+                            ${task.completed ? 'Completed' : 'Pending'}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="flex gap-1">
+                            <button class="btn btn-warning btn-xs edit-btn" data-id="${task.id}" title="Edit">
+                                <i class="bx bx-edit-alt"></i>    
+                            </button>
+                            <button class="btn btn-success btn-xs toggle-btn" data-id="${task.id}" title="${task.completed ? 'Mark Pending' : 'Mark Complete'}">
+                                <i class="bx ${task.completed ? 'bx-time' : 'bx-check'}"></i>
+                            </button>
+                            <button class="btn btn-error btn-xs delete-btn" data-id="${task.id}" title="Delete">
+                                <i class="bx bx-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+
+                taskTableBody.appendChild(tr);
+            });
+
+            // إضافة event listeners للأزرار الديناميكية
+            addDynamicEventListeners();
+            updateStats();
+        }
+
+        // ======================= إضافة event listeners ديناميكية ===========================
+        function addDynamicEventListeners() {
+            // أزرار التبديل (اكتمال/عدم اكتمال)
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.currentTarget.getAttribute('data-id');
+                    toggleComplete(id);
+                });
+            });
+
+            // أزرار الحذف
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.currentTarget.getAttribute('data-id');
+                    deleteTask(id);
+                });
+            });
+
+            // أزرار التعديل
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.currentTarget.getAttribute('data-id');
+                    editTask(id);
+                });
+            });
+        }
+
+        // ======================= تغيير حالة المهمة ===========================
+        function toggleComplete(id) {
+            tasks = tasks.map(task =>
+                task.id === id ? { ...task, completed: !task.completed } : task
+            );
+            saveTasks();
+            renderTasks();
+        }
+
+        // ======================= حذف مهمة ===========================
+        function deleteTask(id) {
+            if (!confirm("Are you sure you want to delete this task?")) return;
+            
+            tasks = tasks.filter(task => task.id !== id);
+            saveTasks();
+            renderTasks();
+        }
+
+        // ======================= تعديل مهمة ===========================
+        function editTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (!task) return;
+
+            const newText = prompt("Edit your task:", task.text);
+            if (newText !== null && newText.trim() !== "") {
+                task.text = newText.trim();
+                saveTasks();
+                renderTasks();
+            }
+        }
+
+        // ======================= مسح الكل ===========================
+        clearAllBtn.addEventListener("click", () => {
+            if (tasks.length === 0) {
+                alert("No tasks to clear!");
+                return;
+            }
+            
+            const confirmClear = confirm("Are you sure you want to delete ALL tasks?");
+            if (!confirmClear) return;
+
+            tasks = [];
+            saveTasks();
+            renderTasks();
+        });
+
+        // ======================= البحث ===========================
+        searchInput.addEventListener("input", (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            if (searchTerm === "") {
+                renderTasks();
+                return;
+            }
+
+            const filteredTasks = tasks.filter(task => 
+                task.text.toLowerCase().includes(searchTerm)
+            );
+            
+            renderTasks(filteredTasks);
+        });
+
+        // ======================= التصفية ===========================
+        filterBtn.addEventListener("click", () => {
+            const filterType = prompt("Filter by:\n1. All\n2. Completed\n3. Pending\n\nEnter number:");
+            
+            let filteredTasks = [];
+            
+            switch(filterType) {
+                case "1":
+                    filteredTasks = tasks;
+                    break;
+                case "2":
+                    filteredTasks = tasks.filter(task => task.completed);
+                    break;
+                case "3":
+                    filteredTasks = tasks.filter(task => !task.completed);
+                    break;
+                default:
+                    return;
+            }
+            
+            renderTasks(filteredTasks);
+        });
+
+        // ======================= الترتيب ===========================
+        sortBtn.addEventListener("click", () => {
+            const sortType = prompt("Sort by:\n1. Date added (newest first)\n2. Date added (oldest first)\n3. Alphabetical (A-Z)\n4. Alphabetical (Z-A)\n\nEnter number:");
+            
+            let sortedTasks = [...tasks];
+            
+            switch(sortType) {
+                case "1":
+                    sortedTasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    break;
+                case "2":
+                    sortedTasks.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                    break;
+                case "3":
+                    sortedTasks.sort((a, b) => a.text.localeCompare(b.text));
+                    break;
+                case "4":
+                    sortedTasks.sort((a, b) => b.text.localeCompare(a.text));
+                    break;
+                default:
+                    return;
+            }
+            
+            renderTasks(sortedTasks);
+        });
+
+        // ======================= السحب والإفلات (Drag & Drop) ===========================
+        let draggedItem = null;
+
+        document.addEventListener('dragstart', (e) => {
+            if (e.target.classList.contains('todo-item')) {
+                draggedItem = e.target;
+                setTimeout(() => {
+                    e.target.style.opacity = '0.5';
+                }, 0);
+            }
+        });
+
+        document.addEventListener('dragend', (e) => {
+            if (e.target.classList.contains('todo-item')) {
+                e.target.style.opacity = '1';
+            }
+        });
+
+        document.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        document.addEventListener('drop', (e) => {
+            e.preventDefault();
+            if (e.target.classList.contains('todo-item') && draggedItem) {
+                const items = Array.from(taskTableBody.children);
+                const draggedIndex = items.indexOf(draggedItem);
+                const targetIndex = items.indexOf(e.target);
+                
+                if (draggedIndex !== targetIndex) {
+                    // إعادة ترتيب المهام في المصفوفة
+                    const [movedTask] = tasks.splice(draggedIndex, 1);
+                    tasks.splice(targetIndex, 0, movedTask);
+                    
+                    saveTasks();
+                    renderTasks();
+                }
+            }
+        });
+
+        // ======================= تحميل أولي ===========================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTasks();
+        });
+    </script>
+</body>
+</html>
