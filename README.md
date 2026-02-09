@@ -1,2 +1,2 @@
-https://todotify.vercel.app/ remake
-the JavaScript was made by AI
+## todotify.vercel.app remake and now is being refactored to React
+no AI this time
