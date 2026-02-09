@@ -1,0 +1,10 @@
+.cridet {
+    background-color: red;
+    display: inline;
+    position: fixed;
+    color: white;
+    padding: 0px 50px;
+    rotate: -45deg;
+    top: 45px;
+    left: -64px;
+}

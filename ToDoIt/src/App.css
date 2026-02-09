@@ -1,42 +1,375 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+
+
+
+
+
+
+/* ===================================main========================== */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 53px 20px 20px;
+    background-color: var(--color-bg);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    padding: 24px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ====================================topMain=============================== */
+main .topMain {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main .topMain h1 {
+    text-align: center;
+    margin-bottom: -9px;
+    font-weight: 800;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+main .topMain .fourBlockes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2px;
+    width: 112%;
+    margin-top: 20px;
+    background-color: var(--color-bg-secondary);
+    overflow: hidden;
+    box-shadow: 0.5px 3px 0px rgba(0,0,0,0.05);
+    border-radius: 15px;
 }
 
-.card {
-  padding: 2em;
+main .topMain .fourBlockes .block {
+    background-color: var(--color-bg);
+    padding: 20px;
+    color: var(--color-text);
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+
+main .topMain .fourBlockes .block .subTitle {
+    color: gray;
+    text-align: start;
+    margin: 0;
+    margin-bottom: 12px;
+    font-size: small;
+    font-weight: 200;
 }
+
+main .topMain .fourBlockes .block .nomberAndIcon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: -10px;
+    margin-right: 16px;
+    margin-left: 3px;
+    font-size: 1.6rem;
+}
+
+main .topMain .fourBlockes .block .nomberAndIcon p {
+    font-size: 35px;
+}
+
+main .topMain .fourBlockes .block1 i, .block1 p {
+    color: var(--color-accent);
+    margin: 0;
+    font-weight: 800;
+}
+main .topMain .fourBlockes .block2 i, .block2 p {
+    color: var(--color-success); 
+    margin: 0;
+    font-weight: 800;
+}
+main .topMain .fourBlockes .block3 i, .block3 p {
+    color: var(--color-warning); 
+    margin: 0;
+    font-weight: 800;
+}
+main .topMain .fourBlockes .block4 i, .block4 p {
+    color: var(--color-info); 
+    margin: 0;
+    font-weight: 800;
+}
+
+main .topMain .loodingBar {
+    width: 112%;
+    background-color: lightgray;
+    border-radius: 30px;
+    margin-top: 13px;
+    height: 12px;
+}
+
+/* ====================================bottomMain=============================== */
+main .bottomMain {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+/* ====================================interractian============================== */
+main .bottomMain .interractian {
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
+    justify-content: space-between;
+    /* display: block; */
+    margin-bottom: 35px;
+}
+
+main .bottomMain .interractian input {
+    display: block;
+    width: 23em;
+    border-radius: 10px;
+    padding: 0 12px;
+    border: 1px solid red;
+}
+
+main .bottomMain .interractian button {
+    padding: 9px 16px;
+    border-radius: 7px;
+    border: 0;
+    background-color: red;
+    color: white;
+}
+
+main .bottomMain .sershAndSort {
+    display: flex;
+    height: 45px;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+main .bottomMain .sershAndSort input {
+    flex: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 0 15px;
+}
+
+main .bottomMain .sershAndSort button {
+    background-color: rgba(0, 0, 0, 0.0);
+    font-size: 15px;
+    padding: 13px;
+    border-radius: 10px;
+    border: 1.5px solid rgb(65, 65, 65);
+
+}
+
+main .bottomMain .towButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .bottomMain .towButtons .deleteAll {
+    padding: 14px 16px;
+    border-radius: 7px;
+    border: 0;
+    background-color: red;
+    color: white;    
+}
+
+main .bottomMain .towButtons .SORT {
+    padding: 14px 16px;
+    border-radius: 7px;
+    border: 0;
+    background-color: white;
+    color: black;
+    font-weight: 600;
+}
+
+main .bottomMain .theToDos{
+    display: flex;
+}
+
+main .bottomMain .headerTodos{
+    display: flex;
+}
+
+
+
+/* ========================== TABLE ============================= */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 20px;
+}
+
+/* ======= العناوين (thead) ======= */
+.table thead {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.table thead th {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 2px solid var(--color-border);
+}
+
+/* ======= الصفوف (tbody) ======= */
+.table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--color-bg-secondary);
+}
+
+.table tbody tr:hover {
+  background-color: rgba(139, 92, 246, 0.08); /* لون hover بنفسجي خفيف */
+}
+
+/* ======= الخلايا ======= */
+.table td {
+  padding: 12px 16px;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
+}
+
+/* ======= الشارات (Status badges) ======= */
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+}
+
+.badge-warning {
+  background-color: var(--color-warning);
+  color: #000;
+}
+
+.badge-success {
+  background-color: var(--color-success);
+}
+
+.badge-danger {
+  background-color: var(--color-danger);
+}
+
+.badge-info {
+  background-color: var(--color-info);
+}
+
+/* ======= الأزرار داخل الجدول ======= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  color: white;
+}
+
+.btn i {
+  font-size: 1rem;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-info { background-color: var(--color-info); }
+.btn-warning { background-color: var(--color-warning); color: #000; }
+.btn-success { background-color: var(--color-success); }
+.btn-error { background-color: var(--color-danger); }
+
+/* ======= تصغير الأزرار (btn-xs) ======= */
+.btn-xs {
+  padding: 4px 6px;
+  font-size: 0.75rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================mobile=================================================== */
+@media (max-width: 768px) {
+    main .bottomMain .interractian {
+        display: flex;
+        margin-top: 30px;
+        width: 100%;
+        height: 150px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main .bottomMain .interractian input {
+        height: 100px;
+        margin-bottom: 10px;
+        width: min(23em,90%);
+    }
+
+    main .bottomMain .interractian button {
+        width: 50%;
+    }
+    main .bottomMain .sershAndSort input {
+        width: 0;
+    }
+
+    .table thead th {
+        padding: 8px 19px;
+        text-align: left;
+        border-bottom: 2px solid var(--color-border);
+    }
+
+    .table {
+        display: flex;
+        overflow: scroll;
+        /* width: auto; */
+        border-collapse: collapse;
+        background-color: var(--color-bg);
+        border-radius: 10px;
+        overflow: scroll;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+}
+
+
+
