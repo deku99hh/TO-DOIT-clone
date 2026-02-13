@@ -1,8 +1,89 @@
+import { useState } from 'react';
+
 import { Todos } from '../comp/Todos.jsx';
 
 import './HomePage.css';
 
 export function HomePage() {
+
+    let [todosArray, setTodosArray] = useState(localStorage.getItem('todosArray') ? JSON.parse(localStorage.getItem('todosArray')) : [
+        {
+            name: 'Text1',
+            duedate: "2026/02/04",
+            Status: "pending",
+
+        }, {
+            name: 'Text2',
+            duedate: "2026/02/04",
+            Status: "Completed",
+        }, {
+            name: 'Text3',
+            duedate: "2026/02/04",
+            Status: "pending",
+        },
+    ]);
+
+    function setToLocal() {
+        localStorage.setItem('todosArray', JSON.stringify(todosArray));
+        console.log('setToLocal()');
+        console.log(JSON.stringify(todosArray));
+    }
+
+    function handleComplete(index) {
+        if (todosArray[index].Status === "Completed") {
+            todosArray[index].Status = "pending";
+        } else {
+            todosArray[index].Status = "Completed";
+        }
+        setTodosArray([
+            ...todosArray
+        ])
+        setToLocal()
+    }
+
+    function handleDelete(index) {
+        todosArray.splice(index, 1);
+        setTodosArray([
+            ...todosArray
+        ])
+        setToLocal()
+    }
+
+
+    let textInput = null;
+    let textDate = null;
+
+    function addToDo() {
+        if (textInput && textDate) {
+            todosArray = [
+                ...todosArray,
+                {
+                    name: textInput,
+                    duedate: textDate,
+                    Status: "pending",
+                }
+            ]
+            setTodosArray([
+                ...todosArray
+            ])
+            setToLocal()
+        }
+    }
+
+    function deleteAll() {
+        todosArray = []
+
+        setTodosArray([
+            ...todosArray
+        ])
+
+        setToLocal()
+    }
+
+    function thePercentegeIsLongEnoph() {
+        return (Math.round(((todosArray.filter(task => task.Status === 'Completed').length) / ((todosArray.filter(task => task.Status !== 'Completed').length) + (todosArray.filter(task => task.Status === 'Completed').length))) * 100) ? Math.round(((todosArray.filter(task => task.Status === 'Completed').length) / ((todosArray.filter(task => task.Status !== 'Completed').length) + (todosArray.filter(task => task.Status === 'Completed').length))) * 100) : 0);
+    }
+
 
     return (
 
@@ -14,44 +95,77 @@ export function HomePage() {
                     <div className="block1 block">
                         <p className="subTitle">Total Tasks</p>
                         <div className="nomberAndIcon">
-                            <p>1</p>
+                            <p>
+                                {
+                                    todosArray.length
+                                }
+                            </p>
                             <i className="bx bx-task text-2xl"></i>
                         </div>
                     </div>
 
                     <div className="block2 block">
-                        <p className="subTitle">Total Tasks</p>
+                        <p className="subTitle">Completed Tasks</p>
                         <div className="nomberAndIcon">
-                            <p>0</p>
+                            <p>
+
+                                {todosArray.filter(task => task.Status === 'Completed').length}
+
+                            </p>
                             <i className="bx bx-check-circle text-2xl"></i>
                         </div>
                     </div>
 
                     <div className="block3 block">
-                        <p className="subTitle">Total Tasks</p>
+                        <p className="subTitle">pending Tasks</p>
                         <div className="nomberAndIcon">
-                            <p>1</p>
+                            <p>
+
+                                {todosArray.filter(task => task.Status === 'pending').length}
+
+                            </p>
                             <i className="bx bx-time text-2xl"></i>
                         </div>
                     </div>
 
                     <div className="block4 block">
-                        <p className="subTitle">Total Tasks</p>
+                        <p className="subTitle">Tasks percentage</p>
                         <div className="nomberAndIcon">
-                            <p>0%</p>
+                            <p>
+                                %
+                                {
+
+                                    thePercentegeIsLongEnoph()
+
+                                }
+
+                            </p>
                             <i className="bx bx-pie-chart-alt text-2xl"></i>
                         </div>
                     </div>
                 </div>
-                <div className="loodingBar">
-                </div>
+                <div
+                    className="loodingBar"
+                    style={{
+                        background: `linear-gradient(to right, #22c55e ${thePercentegeIsLongEnoph()}%, #e5e7eb ${thePercentegeIsLongEnoph()}%)`
+                    }}
+                ></div>
+
             </div>
 
             <div className="bottomMain">
                 <div className="interractian">
-                    <input type="text" className="text" placeholder="add a todo..." />
-                    <input type="date" className="date" />
-                    <button>
+                    <input type="text" className="text" placeholder="add a todo..."
+                        onChange={(Event) => {
+                            textInput = Event.target.value;
+                        }} />
+
+                    <input type="date" className="date"
+                        onChange={(Event) => {
+                            textDate = Event.target.value;
+                        }}
+                    />
+                    <button onClick={addToDo}>
                         <i className="bx bx-plus bx-sm"></i>
                     </button>
 
@@ -64,7 +178,12 @@ export function HomePage() {
                 </div>
                 <div className="towButtons">
                     <button className="SORT"><i className="bx bx-sort mr-1"></i>  SORT</button>
-                    <button className="deleteAll"><i className="bx bx-trash mr-2"></i>  Delete All</button>
+
+                    {
+                        todosArray.length >= 1 ? <button className="deleteAll"
+                            onClick={deleteAll}
+                        ><i className="bx bx-trash mr-2"></i>  Delete All</button> : null
+                    }
                 </div>
 
 
@@ -80,7 +199,7 @@ export function HomePage() {
                     <tbody className="todos-list-body">
 
 
-                        <Todos />
+                        <Todos todosArray={todosArray} handleComplete={handleComplete} handleDelete={handleDelete} />
 
 
                     </tbody>
