@@ -84,6 +84,10 @@ export function HomePage() {
         return (Math.round(((todosArray.filter(task => task.Status === 'Completed').length) / ((todosArray.filter(task => task.Status !== 'Completed').length) + (todosArray.filter(task => task.Status === 'Completed').length))) * 100) ? Math.round(((todosArray.filter(task => task.Status === 'Completed').length) / ((todosArray.filter(task => task.Status !== 'Completed').length) + (todosArray.filter(task => task.Status === 'Completed').length))) * 100) : 0);
     }
 
+    function reverse() {
+        setTodosArray([...todosArray].reverse());
+    }
+
 
     return (
 
@@ -172,12 +176,24 @@ export function HomePage() {
                 </div>
 
 
-                <div className="sershAndSort">
+                {/* <div className="sershAndSort">
                     <input type="text" placeholder="search tasks..." />
                     <button><i className="bx bx-filter mr-2"></i>filter</button>
-                </div>
+                </div> */}
                 <div className="towButtons">
-                    <button className="SORT"><i className="bx bx-sort mr-1"></i>  SORT</button>
+                    {/* <button className="SORT"><i className="bx bx-sort mr-1"></i>  SORT</button> */}
+                    <button style={{
+                        backgroundColor: 'rgba(0, 0, 0, 0.0)',
+                        fontSize: '15px',
+                        padding: '13px',
+                        borderRadius: '10px',
+                        border: '1.5px solid rgb(65, 65, 65)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        cursor: 'pointer'
+                    }}
+                    onClick={reverse}
+                    ><i className="bx bx-filter mr-2"></i>filter</button>
 
                     {
                         todosArray.length >= 1 ? <button className="deleteAll"
@@ -207,7 +223,7 @@ export function HomePage() {
 
             </div>
 
-        </main>
+        </main >
 
     );
 }

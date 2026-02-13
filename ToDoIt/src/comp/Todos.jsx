@@ -36,9 +36,9 @@ export function Todos({ todosArray, handleComplete, handleDelete }) {
                                 <td>
                                     <div className="flex gap-1">
 
-                                        <button className="btn btn-warning btn-xs edit-btn" data-id="mwvfpf848yo44sgi7fc6bt" title="Edit">
+                                        {/* <button className="btn btn-warning btn-xs edit-btn" data-id="mwvfpf848yo44sgi7fc6bt" title="Edit">
                                             <i className="bx bx-edit-alt"></i>
-                                        </button>
+                                        </button> */}
 
                                         <button
                                             onClick={() => handleComplete(index)}
